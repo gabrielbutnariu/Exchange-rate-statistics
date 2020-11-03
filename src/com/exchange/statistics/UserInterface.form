@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.exchange.statistics.UserInterface">
+  <grid id="27dc6" binding="containerPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="3" y="-2" width="1147" height="617"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="428be" binding="currencyPanel" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="North"/>
+        <properties>
+          <background color="-12514548"/>
+        </properties>
+        <border type="none" title="Currency Panel">
+          <title-color color="-1"/>
+        </border>
+        <children>
+          <grid id="ddadf" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints/>
+            <properties>
+              <background color="-12514548"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="debee" class="javax.swing.JLabel" binding="yearStartLabel">
+                <constraints/>
+                <properties>
+                  <background color="-1"/>
+                  <foreground color="-1"/>
+                  <text value="Year"/>
+                </properties>
+              </component>
+              <component id="768a7" class="javax.swing.JComboBox" binding="yearStartComboBox">
+                <constraints/>
+                <properties/>
+              </component>
+              <component id="e89e4" class="javax.swing.JLabel" binding="yearStopLabel">
+                <constraints/>
+                <properties>
+                  <background color="-1"/>
+                  <foreground color="-1"/>
+                  <text value="to"/>
+                </properties>
+              </component>
+              <component id="da29b" class="javax.swing.JComboBox" binding="yearStopComboBox">
+                <constraints/>
+                <properties>
+                  <model/>
+                </properties>
+              </component>
+              <component id="3aa5c" class="javax.swing.JRadioButton" binding="showFromSelectedYearRadioButton">
+                <constraints/>
+                <properties>
+                  <background color="-12514548"/>
+                  <foreground color="-1"/>
+                  <text value="Show from selected year until now"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="797c4" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints/>
+            <properties>
+              <background color="-12514548"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="da50f" class="javax.swing.JLabel">
+                <constraints/>
+                <properties>
+                  <foreground color="-1"/>
+                  <text value="Symbols"/>
+                </properties>
+              </component>
+              <grid id="6e595" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints/>
+                <properties>
+                  <background color="-12514548"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <scrollpane id="38968">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-12514548"/>
+                    </properties>
+                    <border type="none" title="Select one or more">
+                      <font/>
+                      <title-color color="-1"/>
+                    </border>
+                    <children>
+                      <component id="f2198" class="javax.swing.JList" binding="symbolsList">
+                        <constraints/>
+                        <properties>
+                          <layoutOrientation value="1"/>
+                          <model>
+                            <item value="AUD"/>
+                            <item value="BGN"/>
+                            <item value="BRL"/>
+                            <item value="CAD"/>
+                            <item value="CHF"/>
+                            <item value="CNY"/>
+                            <item value="CZK"/>
+                            <item value="DKK"/>
+                            <item value="EUR"/>
+                            <item value="GBP"/>
+                            <item value="HKD"/>
+                            <item value="HRK"/>
+                            <item value="HUF"/>
+                            <item value="IDR"/>
+                            <item value="ILS"/>
+                            <item value="INR"/>
+                            <item value="ISK"/>
+                            <item value="JPY"/>
+                            <item value="KRW"/>
+                            <item value="MXN"/>
+                            <item value="MYR"/>
+                            <item value="NOK"/>
+                            <item value="NZD"/>
+                            <item value="PHP"/>
+                            <item value="PLN"/>
+                            <item value="RON"/>
+                            <item value="RUB"/>
+                            <item value="SEK"/>
+                            <item value="SGD"/>
+                            <item value="THB"/>
+                            <item value="TRY"/>
+                            <item value="USD"/>
+                            <item value="ZAR"/>
+                          </model>
+                          <visibleRowCount value="2"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </scrollpane>
+                </children>
+              </grid>
+            </children>
+          </grid>
+          <grid id="2add3" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+            <constraints/>
+            <properties>
+              <background color="-12514548"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="65efa" class="javax.swing.JLabel" binding="Base">
+                <constraints/>
+                <properties>
+                  <foreground color="-1"/>
+                  <text value="Base"/>
+                </properties>
+              </component>
+              <component id="a2b22" class="javax.swing.JComboBox" binding="baseComboBox">
+                <constraints/>
+                <properties>
+                  <model>
+                    <item value="AUD"/>
+                    <item value="BGN"/>
+                    <item value="BRL"/>
+                    <item value="CAD"/>
+                    <item value="CHF"/>
+                    <item value="CNY"/>
+                    <item value="CZK"/>
+                    <item value="DKK"/>
+                    <item value="EUR"/>
+                    <item value="GBP"/>
+                    <item value="HKD"/>
+                    <item value="HRK"/>
+                    <item value="HUF"/>
+                    <item value="IDR"/>
+                    <item value="ILS"/>
+                    <item value="INR"/>
+                    <item value="ISK"/>
+                    <item value="JPY"/>
+                    <item value="KRW"/>
+                    <item value="MXN"/>
+                    <item value="MYR"/>
+                    <item value="NOK"/>
+                    <item value="NZD"/>
+                    <item value="PHP"/>
+                    <item value="PLN"/>
+                    <item value="RON"/>
+                    <item value="RUB"/>
+                    <item value="SEK"/>
+                    <item value="SGD"/>
+                    <item value="THB"/>
+                    <item value="TRY"/>
+                    <item value="USD"/>
+                    <item value="ZAR"/>
+                  </model>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <grid id="d293e" binding="graphPanel" layout-manager="GridBagLayout">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <foreground color="-1"/>
+          <inheritsPopupMenu value="false"/>
+        </properties>
+        <border type="none" title="Graph Panel"/>
+        <children/>
+      </grid>
+      <grid id="cc471" binding="rawDataPanel" layout-manager="GridBagLayout">
+        <constraints border-constraint="South"/>
+        <properties>
+          <autoscrolls value="false"/>
+          <maximumSize width="500" height="2147483647"/>
+        </properties>
+        <border type="none" title="Raw Data"/>
+        <children>
+          <grid id="a75c5" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="10" bottom="10" right="10"/>
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="f3465" class="javax.swing.JButton" binding="convertCSVButton" default-binding="true">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Convert CSV"/>
+                </properties>
+              </component>
+              <component id="5c2c8" class="javax.swing.JButton" binding="convertJSONButton" default-binding="true">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="Convert JSON"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="3838" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="10" right="0"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <maximumSize width="2000" height="2147483647"/>
+              <preferredSize width="500" height="80"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <scrollpane id="f5f81">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="4fda5" class="javax.swing.JTextArea" binding="rawDataArea">
+                    <constraints/>
+                    <properties>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
+            </children>
+          </grid>
+          <grid id="d0345" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="10" right="0"/>
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <maximumSize width="20000" height="20000"/>
+              <preferredSize width="500" height="80"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <scrollpane id="680b9">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="80b83" class="javax.swing.JTextArea" binding="convertedArea">
+                    <constraints/>
+                    <properties/>
+                  </component>
+                </children>
+              </scrollpane>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
