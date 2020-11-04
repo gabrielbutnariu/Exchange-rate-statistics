@@ -14,7 +14,7 @@ public class Plotter {
 
     public void createDataset(Day[] x, double[] y, String title) {
         //this can be modified to get a list of series, so i can add as many series as i want
-
+        //this can be used to add just one plot
         TimeSeriesCollection dataset = new TimeSeriesCollection();
         TimeSeries series1 = new TimeSeries(title);
         for(int i = 0;i<y.length;i++){
@@ -27,14 +27,14 @@ public class Plotter {
     public void createDataset(List<Map<Day[],double[]>> seriesList, List symbols, String base){
         TimeSeriesCollection dataset = new TimeSeriesCollection();
         int j = 0;
-        for (Map<Day[],double[]> map : seriesList){
+        for (Map<Day[],double[]> map : seriesList){ //for every element in that list i create a series that can be added to graph
             TimeSeries series = new TimeSeries(symbols.get(j++).toString() + "/" + base);
             for (Map.Entry<Day[],double[]> entry : map.entrySet()) {
                 for (int i = 0; i < entry.getValue().length; i++){
                     series.add(entry.getKey()[i],entry.getValue()[i]);
                 }
             }
-            dataset.addSeries(series);
+            dataset.addSeries(series); //adding all the series to the dataset
         }
         this.dataSet = dataset;
     }

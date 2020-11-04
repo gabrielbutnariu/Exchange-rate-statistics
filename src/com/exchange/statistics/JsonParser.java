@@ -25,7 +25,7 @@ public class JsonParser {
     }
     public void extractRatesFromJsonObject(){
       try{
-          JSONObject ratesJson = new JSONObject(jsonObject.getJSONObject("rates").toString());
+          JSONObject ratesJson = new JSONObject(jsonObject.getJSONObject("rates").toString());// search rates field from json object
           jsonRatesToMap =  new TreeMap<>(); //to sort all data by date(key)
           Iterator<String> keyItr = ratesJson.keys();
           while (keyItr.hasNext()){
@@ -61,19 +61,20 @@ public class JsonParser {
             meanValueCurrency = 0;
             double aux = 0;
             for (String year : keys){ //every currency its linked with the same date, so i'm adding them by key
-                JSONObject currencyValues = new JSONObject(map.get(year));
-                if (aux > (valuesForCurrency[i++] = Double.parseDouble(currencyValues.get(currency).toString()))) {
+                JSONObject currencyValues = new JSONObject(map.get(year)); // jsonobject with all the currency for a specific year
+                if (aux > (valuesForCurrency[i++] = Double.parseDouble(currencyValues.get(currency).toString()))) { // used to count increase or decrease
+                    // compare old value with current one
                     currencyUp++;
                 }else{
                     currencDown++;
                 }
-                aux = valuesForCurrency[i-1];
+                aux = valuesForCurrency[i-1];// saving current value
                 meanValueCurrency += aux;
 
             }
             meanValueCurrency = meanValueCurrency/i;
             valuesFromRateMap.add(valuesForCurrency);
-            currencyStatistics.add(new CurrencyStatistics(currencyUp,currencDown,meanValueCurrency,currency));
+            currencyStatistics.add(new CurrencyStatistics(currencyUp,currencDown,meanValueCurrency,currency)); //adding currency object to a list
         }
         return valuesFromRateMap;
     }
@@ -83,7 +84,7 @@ public class JsonParser {
         List<Map<Day[],double[]>> seriesList = new ArrayList<>();
         getCurrencyDate();
         System.out.println();
-        List<double[]> currencyValues = getCurrencyValues(symbols);
+        List<double[]> currencyValues = getCurrencyValues(symbols); // list with all currency{{currency1},{currency2}...and so on}
         for (int i = 0; i < currencyValues.size(); i++){
             Map<Day[], double[]> dataSet = new HashMap<>();
             dataSet.put(timeStamp,currencyValues.get(i));

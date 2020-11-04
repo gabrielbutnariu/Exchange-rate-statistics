@@ -15,7 +15,7 @@ public class HttpClient {
             url = new URL(urlToRead);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getResponseCode() / 100 == 2 ? connection.getInputStream() : connection.getErrorStream()));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getResponseCode() / 100 == 2 ? connection.getInputStream() : connection.getErrorStream())); //verify the code from html headers
             String line;
             while ((line = bufferedReader.readLine()) != null){
                 result.append(line);
@@ -24,7 +24,6 @@ public class HttpClient {
         }catch (Exception e){
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
-        System.out.println("from httpClient" + result.toString());
         return result.toString();
     }
 }
