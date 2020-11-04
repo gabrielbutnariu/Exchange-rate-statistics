@@ -11,12 +11,14 @@ import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.time.Day;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Year;
 import java.util.*;
+import java.util.List;
 
 public class UserInterface extends JFrame{
     private JPanel containerPanel;
@@ -29,16 +31,18 @@ public class UserInterface extends JFrame{
     private JComboBox baseComboBox;
     private JLabel Base;
     private JPanel rawDataPanel;
-    private JButton convertCSVButton;
-    private JButton convertJSONButton;
     private JTextArea convertedArea;
     private JTextArea rawDataArea;
     private JRadioButton showFromSelectedYearRadioButton;
     private JList symbolsList;
+    private JPanel statisticsContainer;
+    private JTextArea statisticsArea;
     private XYPlot xyPlot;
     private JFreeChart chart;
     private ChartPanel chartPanel;
     private Plotter plotter = new Plotter();
+    private JPanel currencyStatisticsPanel;
+    private JScrollPane scrollPane;
 
     public UserInterface(){
         super();
@@ -50,7 +54,7 @@ public class UserInterface extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         rawDataArea.setEditable(false);
-        convertedArea.setEditable(false);
+
         populateCurrencyPanel();
 
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
@@ -69,7 +73,6 @@ public class UserInterface extends JFrame{
         final String[] resultFromHttp = new String[1];
 
         rawDataArea.setLineWrap(true);
-        convertedArea.setLineWrap(true);
         showFromSelectedYearRadioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -86,7 +89,7 @@ public class UserInterface extends JFrame{
         currencyPanel.add(new JButton(new AbstractAction("Search") {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(Integer.parseInt(yearStartComboBox.getSelectedItem().toString()) >= Integer.parseInt(yearStopComboBox.getSelectedItem().toString())){
+                if((Integer.parseInt(yearStartComboBox.getSelectedItem().toString()) >= Integer.parseInt(yearStopComboBox.getSelectedItem().toString())) && !showFromSelectedYearRadioButton.isSelected()){
                     JOptionPane.showMessageDialog(null,"Please select a proper combination for both years!");
                 }else{
                     String symbols = "";
@@ -119,6 +122,24 @@ public class UserInterface extends JFrame{
                     }
                     xyPlot.setDataset(plotter.getDataSet());
                     rawDataArea.append(Arrays.toString(resultFromHttp));
+                    List<CurrencyStatistics> currencyStatistics = jsonParser.getCurrencyStatistics();
+                    currencyStatisticsPanel = new JPanel(new GridLayout(currencyStatistics.size(), 0, 5, 5));
+                    if(scrollPane != null){
+                        statisticsContainer.remove(scrollPane);
+                    }
+                    scrollPane=new JScrollPane(
+                            currencyStatisticsPanel,
+                            ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
+                            ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER
+                    );
+                    for(CurrencyStatistics l : currencyStatistics){
+                        JTextArea statisticsArea = new JTextArea(l.getSymbol()+"   ↑  "+ l.getCntCurrencyUp()+"    ↓  " + l.getCntCurrencyDown() + "   Mean:  "+ l.getMeanCurrencyValue());
+                        currencyStatisticsPanel.add(statisticsArea);
+                    }
+                    scrollPane.setViewportView (currencyStatisticsPanel);
+                    statisticsContainer.add(scrollPane);
+                    containerPanel.revalidate();
+                    SwingUtilities.updateComponentTreeUI(containerPanel);
                 }
             }
         }));

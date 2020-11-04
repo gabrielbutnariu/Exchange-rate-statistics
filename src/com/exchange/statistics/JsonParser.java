@@ -15,6 +15,9 @@ public class JsonParser {
     private Map<String,String> jsonRatesToMap;
     private Day[] timeStamp;
     private double[] currencyValues;
+    private int currencyUp = 0, currencDown = 0;
+    private double meanValueCurrency = 0;
+    private List<CurrencyStatistics> currencyStatistics = new ArrayList<>();
 
     public JsonParser(String data){
         this.data = data;
@@ -54,11 +57,23 @@ public class JsonParser {
         for (String currency : splitString(symbols,",")){ //for every currency selected
             double[] valuesForCurrency = new double[keys.size()]; //here will be saved all the data for a specific currency
             int i = 0;
+            currencyUp = currencDown = 0;
+            meanValueCurrency = 0;
+            double aux = 0;
             for (String year : keys){ //every currency its linked with the same date, so i'm adding them by key
                 JSONObject currencyValues = new JSONObject(map.get(year));
-                valuesForCurrency[i++] = Double.parseDouble(currencyValues.get(currency).toString());
+                if (aux > (valuesForCurrency[i++] = Double.parseDouble(currencyValues.get(currency).toString()))) {
+                    currencyUp++;
+                }else{
+                    currencDown++;
+                }
+                aux = valuesForCurrency[i-1];
+                meanValueCurrency += aux;
+
             }
+            meanValueCurrency = meanValueCurrency/i;
             valuesFromRateMap.add(valuesForCurrency);
+            currencyStatistics.add(new CurrencyStatistics(currencyUp,currencDown,meanValueCurrency,currency));
         }
         return valuesFromRateMap;
     }
@@ -68,9 +83,10 @@ public class JsonParser {
         List<Map<Day[],double[]>> seriesList = new ArrayList<>();
         getCurrencyDate();
         System.out.println();
-        for (int i = 0; i < getCurrencyValues(symbols).size(); i++){
+        List<double[]> currencyValues = getCurrencyValues(symbols);
+        for (int i = 0; i < currencyValues.size(); i++){
             Map<Day[], double[]> dataSet = new HashMap<>();
-            dataSet.put(timeStamp,getCurrencyValues(symbols).get(i));
+            dataSet.put(timeStamp,currencyValues.get(i));
             seriesList.add(dataSet);
         }
         return seriesList;
@@ -82,4 +98,7 @@ public class JsonParser {
         //System.out.println(splitString);
     }
 
+    public List<CurrencyStatistics> getCurrencyStatistics(){
+        return currencyStatistics;
+    }
 }
