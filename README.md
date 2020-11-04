@@ -15,7 +15,7 @@
 - Statistics visualizer
 
 ## How to use
-
+[![Exchange-rate-Statistics-app.png](https://i.postimg.cc/y810skgX/Exchange-rate-Statistics-app.png)](https://postimg.cc/vcK4v8vc)
 [Exchange Rate Statistics App](https://github.com/gabrielbutnariu/Exchange-rate-statistics/blob/master/out/artifacts/Exchange_rate_Statistics_jar/Exchange%20rate%20Statistics.jar)
  1. Select a start year and a end year/  or check the radio box for current year
  2. Select one or more symbols
