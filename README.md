@@ -12,7 +12,7 @@
 - Plot multiple currencies
 - Basic statistics over one or more currency based on another currency
 - Number of time a currency had incresead/decreased and mean value
-- Statistic visualizer
+- Statistics visualizer
 
 ## How to use
 
